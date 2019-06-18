@@ -1,0 +1,38 @@
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <!-- 1、配置数据库连接的4个参数 -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql:///Sign?serverTimezone=GMT%2B8</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">1234521c</property>
+        <property name="hibernate.autoReconnect">true</property>
+
+        <!-- 是否显示sql语句 -->
+        <property name="show_sql">true</property>
+
+        <!-- 是否格式化sql语句 -->
+        <property name="format_sql">true</property>
+
+        <!-- hibernate.hbm2ddl.auto
+			配置映射文件与数据库表的关系
+			update:如果数据库有没表，自动帮你创表【常用】
+		 -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+
+        <!-- hiberante.dialect:数据库方言
+			 mysql:分页limit
+			 oracle:分页rownum
+		 -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+        <!-- 配置映射文件 -->
+        <mapping resource="cui/sign/domain/Student.hbm.xml"></mapping>
+        <mapping resource="cui/sign/domain/Sign.hbm.xml"></mapping>
+        <mapping resource="cui/sign/domain/TimeLimit.hbm.xml"></mapping>
+        <mapping resource="cui/sign/domain/Admin.hbm.xml"></mapping>
+    </session-factory>
+</hibernate-configuration>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cui.sign.domain">
+
+    <class name="cui.sign.domain.Admin" table="s_Admin" dynamic-insert="true" dynamic-update="true" >
+        <id name="AId" type="integer">
+            <generator class="native"></generator>
+        </id>
+        <property name="name"></property>
+        <property name="userName"></property>
+        <property name="password"></property>
+        <property name="competence" update="false"></property>
+        <property name="email"></property>
+        <property name="tel"></property>
+        <property name="createDate" update="false" type="timestamp"></property>
+    </class>
+</hibernate-mapping>

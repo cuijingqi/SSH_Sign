@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/aop
+                           http://www.springframework.org/schema/aop/spring-aop.xsd
+                           http://www.springframework.org/schema/tx
+                           http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 创建sessionFactory-->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <!-- 配置hibernate的配置文件路径-->
+        <property name="configLocation" value="classpath:Hibernate.cfg.xml"></property>
+    </bean>
+
+    <!-- 创建Hibernate的模版-->
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <!-- 创建dao -->
+    <bean id="studentDao" class="cui.sign.dao.StudentDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean id="signDao" class="cui.sign.dao.SignDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <bean id="timeLimitDao" class="cui.sign.dao.TimeLimitDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+        <property name="signDao" ref="signDao"></property>
+    </bean>
+    <bean id="adminDao" class="cui.sign.dao.AdminDaoImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"></property>
+    </bean>
+    <!-- 创建service-->
+    <bean id="studentService" class="cui.sign.service.StudentServiceImpl">
+        <property name="studentDao" ref="studentDao"></property>
+        <property name="timeLimitDao" ref="timeLimitDao"></property>
+        <property name="signDao" ref="signDao"></property>
+    </bean>
+    <bean id="adminService" class="cui.sign.service.AdminServiceImp">
+        <property name="adminDao" ref="adminDao"></property>
+        <property name="studentDao" ref="studentDao"></property>
+        <property name="timeLimitDao" ref="timeLimitDao"></property>
+        <property name="signDao" ref="signDao"></property>
+    </bean>
+
+    <!--action注入service-->
+    <bean class="cui.sign.web.action.StudentAction">
+        <property name="studentService" ref="studentService"></property>
+        <property name="adminService" ref="adminService"></property>
+    </bean>
+    <bean class="cui.sign.web.action.AdminAction">
+        <property name="adminService" ref="adminService"></property>
+    </bean>
+    <bean class="cui.sign.web.action.TimeLimitAction">
+        <property name="adminService" ref="adminService"></property>
+    </bean>
+    <bean class="cui.sign.web.action.SignAction">
+        <property name="adminService" ref="adminService"></property>
+    </bean>
+
+    <!--配置事务-->
+    <!-- 1.事务管理器-->
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <!--2.配置通知-->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!--3.把通知应用到切入点-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cui.sign.dao.*.*(..))"></aop:advisor>
+    </aop:config>
+</beans>

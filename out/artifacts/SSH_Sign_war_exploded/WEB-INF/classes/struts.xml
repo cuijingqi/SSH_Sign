@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <constant name="struts.i18n.encoding" value="utf-8"/>
+    <constant name="struts.devMode" value="true"/>
+
+    <package name="mypackage" abstract="true" extends="struts-default">
+
+    </package>
+
+    <package name="king" extends="mypackage">
+        <action name="sign" class="cui.sign.web.action.StudentAction" method="Sign">
+            <result name="success" type="dispatcher">/Sign.jsp</result>
+        </action>
+
+        <action name="admin" class="cui.sign.web.action.AdminAction" method="admin">
+            <result name="success" type="dispatcher">/Admin.jsp</result>
+        </action>
+    </package>
+
+    <package name="Student" extends="mypackage" namespace="/Student">
+
+        <action name="Find" class="cui.sign.web.action.StudentAction" method="Find">
+        </action>
+        <action name="InsertStudent" class="cui.sign.web.action.StudentAction" method="insertStudent">
+        </action>
+        <action name="UpdataStudent" class="cui.sign.web.action.StudentAction" method="updataStudent">
+        </action>
+        <action name="SelectStudent" class="cui.sign.web.action.StudentAction" method="selectStudent">
+        </action>
+        <action name="IndexPages" class="cui.sign.web.action.StudentAction" method="indexPage">
+        </action>
+        <action name="SignCount" class="cui.sign.web.action.StudentAction" method="signCount">
+        </action>
+        <action name="DeleteStudent" class="cui.sign.web.action.StudentAction" method="deleteStudent">
+        </action>
+        <action name="SelectSign" class="cui.sign.web.action.StudentAction" method="selectSign">
+        </action>
+    </package>
+    <package name="Admin" extends="mypackage" namespace="/Admin">
+        <action name="Login" class="cui.sign.web.action.AdminAction" method="login">
+            <result name="error">/Admin.jsp</result>
+            <result name="login" type="redirect">/AdminPanel.jsp</result>
+        </action>
+        <action name="Quit" class="cui.sign.web.action.AdminAction" method="quit">
+        </action>
+        <action name="InsertAdmin" class="cui.sign.web.action.AdminAction" method="insertAdmin">
+        </action>
+        <action name="UpdataAdmin" class="cui.sign.web.action.AdminAction" method="updataAdmin">
+        </action>
+        <action name="SelectAdmin" class="cui.sign.web.action.AdminAction" method="selectAdmin">
+        </action>
+        <action name="IndexPages" class="cui.sign.web.action.AdminAction" method="indexPage">
+        </action>
+        <action name="DeleteAdmin" class="cui.sign.web.action.AdminAction" method="deleteAdmin">
+        </action>
+    </package>
+    <package name="TimeLimit" extends="mypackage" namespace="/TimeLimit">
+        <action name="Find" class="cui.sign.web.action.TimeLimitAction" method="Find">
+        </action>
+        <action name="InsertTimeLimit" class="cui.sign.web.action.TimeLimitAction" method="insertTimeLimit">
+        </action>
+        <action name="SelectTimeLimit" class="cui.sign.web.action.TimeLimitAction" method="selectTimeLimit">
+        </action>
+        <action name="SelectSign" class="cui.sign.web.action.TimeLimitAction" method="selectSign">
+        </action>
+        <action name="SelectStudent" class="cui.sign.web.action.TimeLimitAction" method="selectStudent">
+        </action>
+        <action name="IndexPages" class="cui.sign.web.action.TimeLimitAction" method="indexPage">
+        </action>
+        <action name="DeleteTimeLimit" class="cui.sign.web.action.TimeLimitAction" method="deleteTimeLimit">
+        </action>
+        <action name="DeleteSign" class="cui.sign.web.action.TimeLimitAction" method="deleteSign">
+        </action>
+        <action name="UpdataTimeLimit" class="cui.sign.web.action.TimeLimitAction" method="updataTimeLimit">
+        </action>
+    </package>
+    <package name="Sign" extends="mypackage" namespace="/Sign">
+        <action name="DeleteSign" class="cui.sign.web.action.SignAction" method="deleteSign">
+        </action>
+    </package>
+
+</struts>
