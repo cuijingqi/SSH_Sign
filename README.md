@@ -19,8 +19,8 @@
 
 QQ：546836710
 
-Emael:cjq_wy@163.com
+Email:cjq_wy@163.com
 
-Emael:546836710@qq.com
+Email:546836710@qq.com
 
-Emael:cuijingqi.1015@gmail.com
+Email:cuijingqi.1015@gmail.com
