@@ -167,5 +167,9 @@
 <%--        <%--%>
 <%--    }--%>
 <%--%>--%>
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.3.4/lib/darkmode-js.min.js"></script>
+<script>
+    new Darkmode().showWidget();
+</script>
 </body>
 </html>
