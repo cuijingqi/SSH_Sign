@@ -2,6 +2,9 @@
 
 于2019年6月6日开发，签到考勤管理系统。
 
+前端:Bootstrap+JSP
+	
+后端:Struts2+Sqring+Hibernate
 
 # 功能
 
