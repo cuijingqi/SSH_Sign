@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class Power implements Filter {
+public class PowerFilter implements Filter {
     /**
      * 需要排除的页面
      */
