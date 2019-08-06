@@ -61,7 +61,7 @@ class MyRequest extends HttpServletRequestWrapper{
 	
 	@Override
 	public String getParameter(String name) {
-		return getParameterMap().get(name)[0];
+		return getParameterMap().get(name)[0]==null?"":getParameterMap().get(name)[0];
 	}
 	
 	@Override
