@@ -34,13 +34,13 @@
 
     <filter>
         <filter-name>encodingFilter </filter-name>
-<!--        只能解决post请求乱码-->
-        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
-        <init-param>
-            <param-name>encoding</param-name>
-            <param-value>UTF-8</param-value>
-        </init-param>
-<!--        <filter-class>cui.sign.Filter.EncodingFilter</filter-class>-->
+<!--&lt;!&ndash;        只能解决post请求乱码&ndash;&gt;-->
+<!--        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
+<!--        <init-param>-->
+<!--            <param-name>encoding</param-name>-->
+<!--            <param-value>UTF-8</param-value>-->
+<!--        </init-param>-->
+        <filter-class>cui.sign.Filter.EncodingFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>encodingFilter</filter-name>
