@@ -6,9 +6,9 @@
     <session-factory>
         <!-- 1、配置数据库连接的4个参数 -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql:///Sign?serverTimezone=GMT%2B8</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3307/Sign?serverTimezone=GMT%2B8</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">1234521c</property>
+        <property name="hibernate.connection.password">admin</property>
         <property name="hibernate.autoReconnect">true</property>
 
         <!-- 是否显示sql语句 -->
