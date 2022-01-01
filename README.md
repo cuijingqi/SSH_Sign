@@ -20,8 +20,6 @@
 
 QQ：546836710
 
-Email:cjq_wy@163.com
+Email:cuijingqichn@163.com
 
-Email:546836710@qq.com
-
-Email:cuijingqi.1015@gmail.com
+Email:cuijingqichn@gmail.com
