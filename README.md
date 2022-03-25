@@ -18,8 +18,6 @@
 
 # 作者
 
-QQ：546836710
-
 Email:cuijingqichn@163.com
 
 Email:cuijingqichn@gmail.com
